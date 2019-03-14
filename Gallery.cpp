@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 #include "MemoryAccess.h"
 #include "AlbumManager.h"
 
@@ -28,6 +29,16 @@ int getCommandNumberFromUser()
 	return std::atoi(input.c_str());
 }
 
+void printSystemInfo()
+{
+	char timeBuffer[9];
+	std::time_t t = std::time(nullptr);
+	strftime(timeBuffer, sizeof(timeBuffer), "%H:%M:%S", std::localtime(&t));
+	std::cout << "System Info:" << std::endl;
+	std::cout << "Developer: ***REMOVED***, Current Time: " << timeBuffer << std::endl;
+	std::cout << "===================" << std::endl;
+}
+
 int main(void)
 {
 	// initialization data access
@@ -40,6 +51,7 @@ int main(void)
 	std::string albumName;
 	std::cout << "Welcome to Gallery!" << std::endl;
 	std::cout << "===================" << std::endl;
+	printSystemInfo();
 	std::cout << "Type " << HELP << " to a list of all supported commands" << std::endl;
 	
 	do {
