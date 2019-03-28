@@ -13,7 +13,7 @@ class DatabaseAccess : public IDataAccess
 
 		bool open() override;
 		void close() override;
-		void clear() override;
+		void clear() override {};
 
 		const std::list<Album> getAlbums() override;
 		const std::list<Album> getAlbumsOfUser(const User& user) override;
@@ -48,8 +48,6 @@ class DatabaseAccess : public IDataAccess
 
 	private:
 		sqlite3* db;
-		std::list<Album> m_albums;
-		std::list<User> m_users;
 
 		bool execSql(std::string stmt);
 
